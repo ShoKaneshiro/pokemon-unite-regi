@@ -18,7 +18,7 @@ Pokemon Uniteのレジ系ポケモン出現パターン予測アプリ
 
 ## デモ
 
-https://YOUR_USERNAME.github.io/pokemon-unite-regi/
+https://shokaneshiro.github.io/pokemon-unite-regi/
 
 ## ローカルで実行
 
