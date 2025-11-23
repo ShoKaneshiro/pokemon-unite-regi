@@ -136,6 +136,34 @@ function parseHistoryData(csvText) {
             });
         }
     }
+
+    // Save to localStorage
+    saveToLocalStorage();
+}
+
+// Save data to localStorage
+function saveToLocalStorage() {
+    try {
+        localStorage.setItem('regi-history-data', JSON.stringify(historyData));
+        console.log('💾 データをlocalStorageに保存しました');
+    } catch (error) {
+        console.error('localStorage保存エラー:', error);
+    }
+}
+
+// Load data from localStorage
+function loadFromLocalStorage() {
+    try {
+        const stored = localStorage.getItem('regi-history-data');
+        if (stored) {
+            historyData = JSON.parse(stored);
+            console.log('📂 localStorageからデータを読み込みました:', historyData.length, '件');
+            return true;
+        }
+    } catch (error) {
+        console.error('localStorage読み込みエラー:', error);
+    }
+    return false;
 }
 
 // Add new data entry
@@ -158,6 +186,9 @@ addDataBtn.addEventListener('click', () => {
         "4:30": { top: form430Top, bottom: form430Bottom },
         "3:00": { top: form300Top, bottom: form300Bottom }
     });
+
+    // Save to localStorage
+    saveToLocalStorage();
 
     // Update history display
     displayHistory();
@@ -303,8 +334,11 @@ function createPredictionCard(prediction, index, time) {
 }
 
 // Load initial data on page load
-parseHistoryData(initialData);
-console.log('📊 初期データを読み込みました！', historyData.length, '件のデータ');
+// Try localStorage first, fallback to embedded initial data
+if (!loadFromLocalStorage()) {
+    parseHistoryData(initialData);
+    console.log('📊 初期データを読み込みました！', historyData.length, '件のデータ');
+}
 
 // Display initial history
 displayHistory();
