@@ -13,11 +13,28 @@ const colorMap = {
     "アイス": "bg-yellow",
     "ロック": "bg-purple",
     "スチル": "bg-green",
-    "ドラゴ": "bg-pink"
+    "エレキ": "bg-yellow",
+    "アイス": "bg-blue",
+    "ロック": "bg-orange",
+    "スチル": "bg-purple"
 };
 
-// Store history data
+// History data
 let historyData = [];
+
+// Screen Navigation
+function showScreen(screenName) {
+    // Hide all screens
+    document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.add('hidden');
+    });
+
+    // Show selected screen
+    const targetScreen = document.getElementById(`${screenName}-screen`);
+    if (targetScreen) {
+        targetScreen.classList.remove('hidden');
+    }
+}
 
 // Initial embedded data (can be overridden by loading a file)
 const initialData = `7:00上,7:00下,4:30上,4:30下,3:00上,3:00下
@@ -43,6 +60,12 @@ const modalMessage = document.getElementById('modal-message');
 const modalOkBtn = document.getElementById('modal-ok-btn');
 const resetBtn = document.getElementById('reset-btn');
 const historyContainer = document.getElementById('history-container');
+const gotoPredictBtn = document.getElementById('goto-predict-btn');
+const gotoRecordBtn = document.getElementById('goto-record-btn');
+
+// Navigation button events
+gotoPredictBtn.addEventListener('click', () => showScreen('predict'));
+gotoRecordBtn.addEventListener('click', () => showScreen('record'));
 
 // Custom modal dialog function
 function showModal(message) {

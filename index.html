@@ -9,137 +9,171 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="title">🌟 レジポケモン よそく 🌟</h1>
-        <p class="subtitle">7:00のポケモンをえらんでね！</p>
+    <!-- Home Screen -->
+    <div id="home-screen" class="screen">
+        <div class="container">
+            <h1 class="title">🌟 レジポケモン よそく 🌟</h1>
+            <p class="subtitle">なにをする？</p>
 
-        <div class="input-section">
-            <div class="pokemon-select">
-                <label>⬆️ 上のポケモン</label>
-                <select id="top-select" class="select-box">
-                    <option value="">えらんでね</option>
-                    <option value="エレキ">⚡ レジエレキ</option>
-                    <option value="アイス">❄️ レジアイス</option>
-                    <option value="ロック">🪨 レジロック</option>
-                    <option value="スチル">🔩 レジスチル</option>
-                </select>
-            </div>
+            <div class="home-buttons">
+                <button id="goto-predict-btn" class="home-btn predict-home-btn">
+                    <div class="btn-icon">🔮</div>
+                    <div class="btn-text">よそくしよう！</div>
+                </button>
 
-            <div class="pokemon-select">
-                <label>➡️ 中のポケモン（ドラゴ固定）</label>
-                <div class="drago-fixed">🐉 レジドラゴ</div>
-            </div>
-
-            <div class="pokemon-select">
-                <label>⬇️ 下のポケモン</label>
-                <select id="bottom-select" class="select-box">
-                    <option value="">えらんでね</option>
-                    <option value="エレキ">⚡ レジエレキ</option>
-                    <option value="アイス">❄️ レジアイス</option>
-                    <option value="ロック">🪨 レジロック</option>
-                    <option value="スチル">🔩 レジスチル</option>
-                </select>
-            </div>
-
-            <button id="predict-btn" class="predict-btn">🔮 よそくする！</button>
-        </div>
-
-        <!-- Custom Modal Dialog -->
-        <div id="custom-modal" class="modal hidden">
-            <div class="modal-content">
-                <p id="modal-message" class="modal-message"></p>
-                <button id="modal-ok-btn" class="modal-ok-btn">OK</button>
+                <button id="goto-record-btn" class="home-btn record-home-btn">
+                    <div class="btn-icon">📝</div>
+                    <div class="btn-text">けっかをきろくしよう！</div>
+                </button>
             </div>
         </div>
+    </div>
 
-        <div id="results" class="results hidden">
-            <h2 class="results-title">✨ よそくけっか ✨</h2>
-            <div id="predictions-container"></div>
-            <button id="reset-btn" class="reset-btn">🔄 リセット</button>
+    <!-- Prediction Screen -->
+    <div id="predict-screen" class="screen hidden">
+        <div class="container">
+            <button class="back-btn" onclick="showScreen('home')">← もどる</button>
+
+            <h1 class="title">🔮 よそく</h1>
+            <p class="subtitle">7:00のポケモンをえらんでね！</p>
+
+            <div class="input-section">
+                <div class="pokemon-select">
+                    <label>⬆️ 上のポケモン</label>
+                    <select id="top-select" class="select-box">
+                        <option value="">えらんでね</option>
+                        <option value="エレキ">⚡ レジエレキ</option>
+                        <option value="アイス">❄️ レジアイス</option>
+                        <option value="ロック">🪨 レジロック</option>
+                        <option value="スチル">🔩 レジスチル</option>
+                    </select>
+                </div>
+
+                <div class="pokemon-select">
+                    <label>➡️ 中のポケモン（ドラゴ固定）</label>
+                    <div class="drago-fixed">🐉 レジドラゴ</div>
+                </div>
+
+                <div class="pokemon-select">
+                    <label>⬇️ 下のポケモン</label>
+                    <select id="bottom-select" class="select-box">
+                        <option value="">えらんでね</option>
+                        <option value="エレキ">⚡ レジエレキ</option>
+                        <option value="アイス">❄️ レジアイス</option>
+                        <option value="ロック">🪨 レジロック</option>
+                        <option value="スチル">🔩 レジスチル</option>
+                    </select>
+                </div>
+
+                <button id="predict-btn" class="predict-btn">🔮 よそくする！</button>
+            </div>
+
+            <div id="results" class="results hidden">
+                <h2 class="results-title">✨ よそくけっか ✨</h2>
+                <div id="predictions-container"></div>
+                <button id="reset-btn" class="reset-btn">🔄 リセット</button>
+            </div>
         </div>
+    </div>
 
-        <div id="data-form" class="data-form">
-            <h3 class="form-title">📝 けっかをきろくしよう！</h3>
-            <p class="form-subtitle">じっさいのゲームで出たポケモンをおしえてね</p>
+    <!-- Data Entry Screen -->
+    <div id="record-screen" class="screen hidden">
+        <div class="container">
+            <button class="back-btn" onclick="showScreen('home')">← もどる</button>
 
-            <div class="form-grid">
-                <div class="form-row">
-                    <label>7:00 上</label>
-                    <select id="form-700-top" class="form-select">
-                        <option value="">えらぶ</option>
-                        <option value="エレキ">⚡ エレキ</option>
-                        <option value="アイス">❄️ アイス</option>
-                        <option value="ロック">🪨 ロック</option>
-                        <option value="スチル">🔩 スチル</option>
-                    </select>
+            <h1 class="title">📝 けっかをきろく</h1>
+
+            <div id="data-form" class="data-form">
+                <h3 class="form-title">📝 けっかをきろくしよう！</h3>
+                <p class="form-subtitle">じっさいのゲームで出たポケモンをおしえてね</p>
+
+                <div class="form-grid">
+                    <div class="form-row">
+                        <label>7:00 上</label>
+                        <select id="form-700-top" class="form-select">
+                            <option value="">えらぶ</option>
+                            <option value="エレキ">⚡ エレキ</option>
+                            <option value="アイス">❄️ アイス</option>
+                            <option value="ロック">🪨 ロック</option>
+                            <option value="スチル">🔩 スチル</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label>7:00 下</label>
+                        <select id="form-700-bottom" class="form-select">
+                            <option value="">えらぶ</option>
+                            <option value="エレキ">⚡ エレキ</option>
+                            <option value="アイス">❄️ アイス</option>
+                            <option value="ロック">🪨 ロック</option>
+                            <option value="スチル">🔩 スチル</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <label>7:00 下</label>
-                    <select id="form-700-bottom" class="form-select">
-                        <option value="">えらぶ</option>
-                        <option value="エレキ">⚡ エレキ</option>
-                        <option value="アイス">❄️ アイス</option>
-                        <option value="ロック">🪨 ロック</option>
-                        <option value="スチル">🔩 スチル</option>
-                    </select>
+                <div class="form-grid">
+                    <div class="form-row">
+                        <label>4:30 上</label>
+                        <select id="form-430-top" class="form-select">
+                            <option value="">えらぶ</option>
+                            <option value="エレキ">⚡ エレキ</option>
+                            <option value="アイス">❄️ アイス</option>
+                            <option value="ロック">🪨 ロック</option>
+                            <option value="スチル">🔩 スチル</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label>4:30 下</label>
+                        <select id="form-430-bottom" class="form-select">
+                            <option value="">えらぶ</option>
+                            <option value="エレキ">⚡ エレキ</option>
+                            <option value="アイス">❄️ アイス</option>
+                            <option value="ロック">🪨 ロック</option>
+                            <option value="スチル">🔩 スチル</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label>3:00 上</label>
+                        <select id="form-300-top" class="form-select">
+                            <option value="">えらぶ</option>
+                            <option value="エレキ">⚡ エレキ</option>
+                            <option value="アイス">❄️ アイス</option>
+                            <option value="ロック">🪨 ロック</option>
+                            <option value="スチル">🔩 スチル</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label>3:00 下</label>
+                        <select id="form-300-bottom" class="form-select">
+                            <option value="">えらぶ</option>
+                            <option value="エレキ">⚡ エレキ</option>
+                            <option value="アイス">❄️ アイス</option>
+                            <option value="ロック">🪨 ロック</option>
+                            <option value="スチル">🔩 スチル</option>
+                        </select>
+                    </div>
                 </div>
+
+                <button id="add-data-btn" class="add-data-btn">💾 データをついか！</button>
             </div>
 
-            <div class="form-grid">
-                <div class="form-row">
-                    <label>4:30 上</label>
-                    <select id="form-430-top" class="form-select">
-                        <option value="">えらぶ</option>
-                        <option value="エレキ">⚡ エレキ</option>
-                        <option value="アイス">❄️ アイス</option>
-                        <option value="ロック">🪨 ロック</option>
-                        <option value="スチル">🔩 スチル</option>
-                    </select>
-                </div>
-
-                <div class="form-row">
-                    <label>4:30 下</label>
-                    <select id="form-430-bottom" class="form-select">
-                        <option value="">えらぶ</option>
-                        <option value="エレキ">⚡ エレキ</option>
-                        <option value="アイス">❄️ アイス</option>
-                        <option value="ロック">🪨 ロック</option>
-                        <option value="スチル">🔩 スチル</option>
-                    </select>
-                </div>
-
-                <div class="form-row">
-                    <label>3:00 上</label>
-                    <select id="form-300-top" class="form-select">
-                        <option value="">えらぶ</option>
-                        <option value="エレキ">⚡ エレキ</option>
-                        <option value="アイス">❄️ アイス</option>
-                        <option value="ロック">🪨 ロック</option>
-                        <option value="スチル">🔩 スチル</option>
-                    </select>
-                </div>
-
-                <div class="form-row">
-                    <label>3:00 下</label>
-                    <select id="form-300-bottom" class="form-select">
-                        <option value="">えらぶ</option>
-                        <option value="エレキ">⚡ エレキ</option>
-                        <option value="アイス">❄️ アイス</option>
-                        <option value="ロック">🪨 ロック</option>
-                        <option value="スチル">🔩 スチル</option>
-                    </select>
+            <div id="history-section" class="history-section">
+                <h3 class="history-title">📚 きろくしたデータ</h3>
+                <div id="history-container" class="history-container">
+                    <p class="no-data">まだデータがありません</p>
                 </div>
             </div>
-
-            <button id="add-data-btn" class="add-data-btn">💾 データをついか！</button>
         </div>
+    </div>
 
-        <div id="history-section" class="history-section">
-            <h3 class="history-title">📚 きろくしたデータ</h3>
-            <div id="history-container" class="history-container">
-                <p class="no-data">まだデータがありません</p>
-            </div>
+    <!-- Custom Modal Dialog -->
+    <div id="custom-modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="modal-message" class="modal-message"></p>
+            <button id="modal-ok-btn" class="modal-ok-btn">OK</button>
         </div>
     </div>
 

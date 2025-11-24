@@ -4,6 +4,93 @@
     box-sizing: border-box;
 }
 
+/* Screen Management */
+.screen {
+    min-height: 100vh;
+    display: block;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+/* Home Screen Buttons */
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.home-btn {
+    width: 100%;
+    padding: 40px;
+    font-size: 2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    font-family: 'Comic Sans MS', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.predict-home-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.record-home-btn {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+}
+
+.home-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.home-btn:active {
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    font-size: 1.5em;
+}
+
+.btn-text {
+    font-size: 0.8em;
+}
+
+/* Back Button */
+.back-btn {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(240, 147, 251, 0.3);
+    font-family: 'Comic Sans MS', sans-serif;
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(240, 147, 251, 0.5);
+}
+
+.back-btn:active {
+    transform: translateY(0);
+}
+
 body {
     font-family: 'Comic Sans MS', 'Arial', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
