@@ -225,11 +225,6 @@ addDataBtn.addEventListener('click', () => {
 
     // Firebase sync will automatically update historyData and display
 
-    // Download updated file
-    downloadUpdatedHistory();
-
-    showModal('✅ データを追加しました！ファイルをダウンロードして、history.txtに保存してね！');
-
     // Clear form
     document.getElementById('form-700-top').value = '';
     document.getElementById('form-700-bottom').value = '';
