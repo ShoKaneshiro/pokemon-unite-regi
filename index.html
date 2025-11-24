@@ -11,20 +11,35 @@
 <body>
     <!-- Home Screen -->
     <div id="home-screen" class="screen">
-        <div class="container">
-            <h1 class="title">🌟 レジポケモン よそく 🌟</h1>
-            <p class="subtitle">なにをする？</p>
+        <div class="home-container">
+            <!-- Upper Half: Rotating Pokemon Icons -->
+            <div class="home-upper">
+                <h1 class="home-title">🌟 レジポケモン よそく 🌟</h1>
 
-            <div class="home-buttons">
-                <button id="goto-predict-btn" class="home-btn predict-home-btn">
-                    <div class="btn-icon">🔮</div>
-                    <div class="btn-text">よそくしよう！</div>
-                </button>
+                <div class="pokemon-circle">
+                    <div class="pokemon-icon icon-1">⚡</div>
+                    <div class="pokemon-icon icon-2">❄️</div>
+                    <div class="pokemon-icon icon-3">🪨</div>
+                    <div class="pokemon-icon icon-4">🔩</div>
+                    <div class="pokemon-icon icon-5">🐉</div>
+                </div>
+            </div>
 
-                <button id="goto-record-btn" class="home-btn record-home-btn">
-                    <div class="btn-icon">📝</div>
-                    <div class="btn-text">けっかをきろくしよう！</div>
-                </button>
+            <!-- Lower Half: Selection Buttons -->
+            <div class="home-lower">
+                <p class="home-subtitle">なにをする？</p>
+
+                <div class="home-buttons">
+                    <button id="goto-predict-btn" class="home-btn predict-home-btn">
+                        <div class="btn-icon">🔮</div>
+                        <div class="btn-text">よそくしよう！</div>
+                    </button>
+
+                    <button id="goto-record-btn" class="home-btn record-home-btn">
+                        <div class="btn-icon">📝</div>
+                        <div class="btn-text">けっかをきろくしよう！</div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

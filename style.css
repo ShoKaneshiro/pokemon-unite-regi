@@ -14,56 +14,199 @@
     display: none;
 }
 
-/* Home Screen Buttons */
-.home-buttons {
+/* Home Screen Layout */
+.home-container {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    margin-top: 40px;
 }
 
-.home-btn {
-    width: 100%;
-    padding: 40px;
-    font-size: 2em;
-    font-weight: bold;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    font-family: 'Comic Sans MS', sans-serif;
+.home-upper {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 15px;
+    padding: 40px 20px;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
 }
 
-.predict-home-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.home-lower {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
+    background: white;
+}
+
+.home-title {
+    font-size: 2.5em;
     color: white;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    font-family: 'Comic Sans MS', sans-serif;
+    animation: pulse 2s ease-in-out infinite;
 }
 
-.record-home-btn {
-    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-    color: white;
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
-.home-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+.home-subtitle {
+    font-size: 1.8em;
+    color: #667eea;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', sans-serif;
 }
 
-.home-btn:active {
-    transform: translateY(-2px);
+/* Pokemon Circle Animation */
+.pokemon-circle {
+    position: relative;
+    width: 300px;
+    height: 300px;
 }
 
-.btn-icon {
-    font-size: 1.5em;
+.pokemon-icon {
+    position: absolute;
+    font-size: 4em;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    animation: rotate 10s linear infinite;
 }
 
-.btn-text {
-    font-size: 0.8em;
+.icon-1 {
+    top: 50%;
+    left: 50%;
+    margin: -40px 0 0 -40px;
+    animation-delay: 0s;
+}
+
+.icon-2 {
+    top: 50%;
+    left: 50%;
+    margin: -40px 0 0 -40px;
+    animation-delay: -2s;
+}
+
+.icon-3 {
+    top: 50%;
+    left: 50%;
+    margin: -40px 0 0 -40px;
+    animation-delay: -4s;
+}
+
+.icon-4 {
+    top: 50%;
+    left: 50%;
+    margin: -40px 0 0 -40px;
+    animation-delay: -6s;
+}
+
+.icon-5 {
+    top: 50%;
+    left: 50%;
+    margin: -40px 0 0 -40px;
+    animation-delay: -8s;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(0, -120px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(0, -120px) rotate(360deg);
+    }
+}
+
+/* Alternative rotation for each icon */
+.icon-1 {
+    animation-name: rotate1;
+}
+
+.icon-2 {
+    animation-name: rotate2;
+}
+
+.icon-3 {
+    animation-name: rotate3;
+}
+
+.icon-4 {
+    animation-name: rotate4;
+}
+
+.icon-5 {
+    animation-name: rotate5;
+}
+
+@keyframes rotate1 {
+    0% {
+        transform: rotate(0deg) translateX(120px) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(120px) rotate(-360deg);
+    }
+}
+
+@keyframes rotate2 {
+    0% {
+        transform: rotate(72deg) translateX(120px) rotate(-72deg);
+    }
+
+    100% {
+        transform: rotate(432deg) translateX(120px) rotate(-432deg);
+    }
+}
+
+@keyframes rotate3 {
+    0% {
+        transform: rotate(144deg) translateX(120px) rotate(-144deg);
+    }
+
+    100% {
+        transform: rotate(504deg) translateX(120px) rotate(-504deg);
+    }
+}
+
+@keyframes rotate4 {
+    0% {
+        transform: rotate(216deg) translateX(120px) rotate(-216deg);
+    }
+
+    100% {
+        transform: rotate(576deg) translateX(120px) rotate(-576deg);
+    }
+}
+
+@keyframes rotate5 {
+    0% {
+        transform: rotate(288deg) translateX(120px) rotate(-288deg);
+    }
+
+    100% {
+        transform: rotate(648deg) translateX(120px) rotate(-648deg);
+    }
 }
 
 /* Back Button */
