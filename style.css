@@ -152,9 +152,11 @@
 
 /* Pokemon Image Styling */
 .pokemon-img {
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
+    display: block;
+    margin: auto;
 }
 
 .pokemon-card-img {
