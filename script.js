@@ -1,4 +1,13 @@
-// Pokemon emoji mapping
+// Pokemon image mapping
+const imageMap = {
+    "エレキ": "images/eleki.png",
+    "アイス": "images/ice.png",
+    "ロック": "images/rock.png",
+    "スチル": "images/steel.png",
+    "ドラゴ": "images/drago.png"
+};
+
+// Pokemon emoji mapping (for backward compatibility)
 const emojiMap = {
     "エレキ": "⚡",
     "アイス": "❄️",
@@ -9,10 +18,6 @@ const emojiMap = {
 
 // Color mapping for Pokemon
 const colorMap = {
-    "エレキ": "bg-blue",
-    "アイス": "bg-yellow",
-    "ロック": "bg-purple",
-    "スチル": "bg-green",
     "エレキ": "bg-yellow",
     "アイス": "bg-blue",
     "ロック": "bg-orange",
@@ -107,10 +112,12 @@ function displayHistory() {
                     <div class="history-time-label">⏰ 7:00</div>
                     <div class="history-pokemon">
                         <span class="history-pokemon-item ${colorMap[entry["7:00"].top]}">
-                            ${emojiMap[entry["7:00"].top]} ${entry["7:00"].top}
+                            <img src="${imageMap[entry["7:00"].top]}" alt="${entry["7:00"].top}" class="history-pokemon-img">
+                            ${entry["7:00"].top}
                         </span>
                         <span class="history-pokemon-item ${colorMap[entry["7:00"].bottom]}">
-                            ${emojiMap[entry["7:00"].bottom]} ${entry["7:00"].bottom}
+                            <img src="${imageMap[entry["7:00"].bottom]}" alt="${entry["7:00"].bottom}" class="history-pokemon-img">
+                            ${entry["7:00"].bottom}
                         </span>
                     </div>
                 </div>
@@ -118,10 +125,12 @@ function displayHistory() {
                     <div class="history-time-label">⏰ 4:30</div>
                     <div class="history-pokemon">
                         <span class="history-pokemon-item ${colorMap[entry["4:30"].top]}">
-                            ${emojiMap[entry["4:30"].top]} ${entry["4:30"].top}
+                            <img src="${imageMap[entry["4:30"].top]}" alt="${entry["4:30"].top}" class="history-pokemon-img">
+                            ${entry["4:30"].top}
                         </span>
                         <span class="history-pokemon-item ${colorMap[entry["4:30"].bottom]}">
-                            ${emojiMap[entry["4:30"].bottom]} ${entry["4:30"].bottom}
+                            <img src="${imageMap[entry["4:30"].bottom]}" alt="${entry["4:30"].bottom}" class="history-pokemon-img">
+                            ${entry["4:30"].bottom}
                         </span>
                     </div>
                 </div>
@@ -129,10 +138,12 @@ function displayHistory() {
                     <div class="history-time-label">⏰ 3:00</div>
                     <div class="history-pokemon">
                         <span class="history-pokemon-item ${colorMap[entry["3:00"].top]}">
-                            ${emojiMap[entry["3:00"].top]} ${entry["3:00"].top}
+                            <img src="${imageMap[entry["3:00"].top]}" alt="${entry["3:00"].top}" class="history-pokemon-img">
+                            ${entry["3:00"].top}
                         </span>
                         <span class="history-pokemon-item ${colorMap[entry["3:00"].bottom]}">
-                            ${emojiMap[entry["3:00"].bottom]} ${entry["3:00"].bottom}
+                            <img src="${imageMap[entry["3:00"].bottom]}" alt="${entry["3:00"].bottom}" class="history-pokemon-img">
+                            ${entry["3:00"].bottom}
                         </span>
                     </div>
                 </div>
@@ -330,6 +341,7 @@ function displayResults(top430, top300) {
     resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
+// Create a prediction card
 function createPredictionCard(prediction, index, time) {
     const rank = index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉';
 
@@ -338,13 +350,16 @@ function createPredictionCard(prediction, index, time) {
             <div class="rank">${rank} ${index + 1}ばん</div>
             <div class="pokemon-row">
                 <div class="pokemon-item ${colorMap[prediction.top]}">
-                    ${emojiMap[prediction.top]} ${prediction.top}
+                    <img src="${imageMap[prediction.top]}" alt="${prediction.top}" class="pokemon-card-img">
+                    ${prediction.top}
                 </div>
                 <div class="pokemon-item ${colorMap['ドラゴ']}">
-                    ${emojiMap['ドラゴ']} ドラゴ
+                    <img src="${imageMap['ドラゴ']}" alt="ドラゴ" class="pokemon-card-img">
+                    ドラゴ
                 </div>
                 <div class="pokemon-item ${colorMap[prediction.bottom]}">
-                    ${emojiMap[prediction.bottom]} ${prediction.bottom}
+                    <img src="${imageMap[prediction.bottom]}" alt="${prediction.bottom}" class="pokemon-card-img">
+                    ${prediction.bottom}
                 </div>
             </div>
             <div class="probability">
