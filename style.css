@@ -80,132 +80,73 @@
 
 .pokemon-icon {
     position: absolute;
+    top: 50%;
+    left: 50%;
     font-size: 4em;
     width: 80px;
     height: 80px;
+    margin: -40px 0 0 -40px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    animation: rotate 10s linear infinite;
+    will-change: transform;
+    -webkit-animation: rotate-circle 10s linear infinite;
+    animation: rotate-circle 10s linear infinite;
 }
 
+/* Position each icon at different angles */
 .icon-1 {
-    top: 50%;
-    left: 50%;
-    margin: -40px 0 0 -40px;
+    -webkit-animation-delay: 0s;
     animation-delay: 0s;
 }
 
 .icon-2 {
-    top: 50%;
-    left: 50%;
-    margin: -40px 0 0 -40px;
+    -webkit-animation-delay: -2s;
     animation-delay: -2s;
 }
 
 .icon-3 {
-    top: 50%;
-    left: 50%;
-    margin: -40px 0 0 -40px;
+    -webkit-animation-delay: -4s;
     animation-delay: -4s;
 }
 
 .icon-4 {
-    top: 50%;
-    left: 50%;
-    margin: -40px 0 0 -40px;
+    -webkit-animation-delay: -6s;
     animation-delay: -6s;
 }
 
 .icon-5 {
-    top: 50%;
-    left: 50%;
-    margin: -40px 0 0 -40px;
+    -webkit-animation-delay: -8s;
     animation-delay: -8s;
 }
 
-@keyframes rotate {
+/* Simplified circular rotation animation */
+@-webkit-keyframes rotate-circle {
     0% {
-        transform: translate(0, -120px) rotate(0deg);
-    }
-
-    100% {
-        transform: translate(0, -120px) rotate(360deg);
-    }
-}
-
-/* Alternative rotation for each icon */
-.icon-1 {
-    animation-name: rotate1;
-}
-
-.icon-2 {
-    animation-name: rotate2;
-}
-
-.icon-3 {
-    animation-name: rotate3;
-}
-
-.icon-4 {
-    animation-name: rotate4;
-}
-
-.icon-5 {
-    animation-name: rotate5;
-}
-
-@keyframes rotate1 {
-    0% {
+        -webkit-transform: rotate(0deg) translateX(120px) rotate(0deg);
         transform: rotate(0deg) translateX(120px) rotate(0deg);
     }
 
     100% {
+        -webkit-transform: rotate(360deg) translateX(120px) rotate(-360deg);
         transform: rotate(360deg) translateX(120px) rotate(-360deg);
     }
 }
 
-@keyframes rotate2 {
+@keyframes rotate-circle {
     0% {
-        transform: rotate(72deg) translateX(120px) rotate(-72deg);
+        -webkit-transform: rotate(0deg) translateX(120px) rotate(0deg);
+        transform: rotate(0deg) translateX(120px) rotate(0deg);
     }
 
     100% {
-        transform: rotate(432deg) translateX(120px) rotate(-432deg);
-    }
-}
-
-@keyframes rotate3 {
-    0% {
-        transform: rotate(144deg) translateX(120px) rotate(-144deg);
-    }
-
-    100% {
-        transform: rotate(504deg) translateX(120px) rotate(-504deg);
-    }
-}
-
-@keyframes rotate4 {
-    0% {
-        transform: rotate(216deg) translateX(120px) rotate(-216deg);
-    }
-
-    100% {
-        transform: rotate(576deg) translateX(120px) rotate(-576deg);
-    }
-}
-
-@keyframes rotate5 {
-    0% {
-        transform: rotate(288deg) translateX(120px) rotate(-288deg);
-    }
-
-    100% {
-        transform: rotate(648deg) translateX(120px) rotate(-648deg);
+        -webkit-transform: rotate(360deg) translateX(120px) rotate(-360deg);
+        transform: rotate(360deg) translateX(120px) rotate(-360deg);
     }
 }
 
