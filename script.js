@@ -120,7 +120,31 @@ function displayHistory() {
     });
 }
 
-// Parse CSV data
+// Firebase: リアルタイムデータ同期
+function setupFirebaseSync() {
+    regiDataRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+            historyData = Object.values(data);
+            console.log('🔥 Firebaseからデータを同期しました:', historyData.length, '件');
+            displayHistory();
+        } else {
+            // データがない場合は初期データを投入
+            loadInitialData();
+        }
+    });
+}
+
+// 初期データをFirebaseに投入
+function loadInitialData() {
+    console.log('📊 初期データをFirebaseに投入中...');
+    parseHistoryData(initialData);
+    historyData.forEach(entry => {
+        regiDataRef.push(entry);
+    });
+}
+
+// Parse CSV data (Firebaseへの投入用に使用)
 function parseHistoryData(csvText) {
     const lines = csvText.trim().split('\n');
     historyData = [];
@@ -136,34 +160,6 @@ function parseHistoryData(csvText) {
             });
         }
     }
-
-    // Save to localStorage
-    saveToLocalStorage();
-}
-
-// Save data to localStorage
-function saveToLocalStorage() {
-    try {
-        localStorage.setItem('regi-history-data', JSON.stringify(historyData));
-        console.log('💾 データをlocalStorageに保存しました');
-    } catch (error) {
-        console.error('localStorage保存エラー:', error);
-    }
-}
-
-// Load data from localStorage
-function loadFromLocalStorage() {
-    try {
-        const stored = localStorage.getItem('regi-history-data');
-        if (stored) {
-            historyData = JSON.parse(stored);
-            console.log('📂 localStorageからデータを読み込みました:', historyData.length, '件');
-            return true;
-        }
-    } catch (error) {
-        console.error('localStorage読み込みエラー:', error);
-    }
-    return false;
 }
 
 // Add new data entry
@@ -180,18 +176,20 @@ addDataBtn.addEventListener('click', () => {
         return;
     }
 
-    // Add to history
-    historyData.push({
+    // Add to Firebase
+    regiDataRef.push({
         "7:00": { top: form700Top, bottom: form700Bottom },
         "4:30": { top: form430Top, bottom: form430Bottom },
         "3:00": { top: form300Top, bottom: form300Bottom }
+    }).then(() => {
+        console.log('🔥 Firebaseにデータを追加しました');
+        showModal('✅ データを追加しました！全ての端末に反映されます！');
+    }).catch((error) => {
+        console.error('Firebase追加エラー:', error);
+        showModal('❌ データ追加に失敗しました');
     });
 
-    // Save to localStorage
-    saveToLocalStorage();
-
-    // Update history display
-    displayHistory();
+    // Firebase sync will automatically update historyData and display
 
     // Download updated file
     downloadUpdatedHistory();
@@ -333,12 +331,6 @@ function createPredictionCard(prediction, index, time) {
     `;
 }
 
-// Load initial data on page load
-// Try localStorage first, fallback to embedded initial data
-if (!loadFromLocalStorage()) {
-    parseHistoryData(initialData);
-    console.log('📊 初期データを読み込みました！', historyData.length, '件のデータ');
-}
-
-// Display initial history
-displayHistory();
+// Initialize Firebase sync on page load
+setupFirebaseSync();
+console.log('🚀 アプリ起動完了！Firebaseと接続中...');
